@@ -43,6 +43,10 @@ public class Chatbot {
         setUpBot();
     }
 
+    public static Person getUser() {
+        return actualUser;
+    }
+
     /**
      * Crea y autentica sesion con el IBM Cloud Watson Assistant
      */
@@ -103,20 +107,16 @@ public class Chatbot {
     }
 
     private Person createUser(MessageContextSkills context, MessageOutput output) {
-        for (RuntimeIntent intent : output.getIntents()) {
-            if (intent.intent().equals("Datos")) {
-                Map<String, Object> contextVariables = context.getProperties().get("main skill").userDefined();
-                if (contextVariables != null) {
-                    String name = String.valueOf(contextVariables.getOrDefault("nombre", "Usuario"));
-                    String lastName = String.valueOf(contextVariables.getOrDefault("apellido", ""));
-                    String genre = String.valueOf(contextVariables.getOrDefault("sexo", "Indefinido"));
-                    double age = (double) contextVariables.getOrDefault("edad", 0);
-                    double height = (double) contextVariables.getOrDefault("altura", 0);
-                    double weight = (double) contextVariables.getOrDefault("peso", 0);
-                    Person person = new Person(name, lastName, age, genre.toLowerCase(), height, weight);
-                    return person;
-                }
-            }
+        Map<String, Object> contextVariables = context.getProperties().get("main skill").userDefined();
+        if (contextVariables != null) {
+            String name = String.valueOf(contextVariables.getOrDefault("nombre", "Usuario"));
+            String lastName = String.valueOf(contextVariables.getOrDefault("apellido", ""));
+            String genre = String.valueOf(contextVariables.getOrDefault("sexo", "Indefinido"));
+            double age = (double) contextVariables.getOrDefault("edad", 0);
+            double height = (double) contextVariables.getOrDefault("altura", 0);
+            double weight = (double) contextVariables.getOrDefault("peso", 0);
+            Person person = new Person(name, lastName, age, genre.toLowerCase(), height, weight);
+            return person;
         }
         return null;
     }
