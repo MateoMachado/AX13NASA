@@ -9,7 +9,6 @@ import com.ibm.watson.assistant.v2.model.MessageResponse;
 import com.ibm.watson.assistant.v2.model.SessionResponse;
 import com.ibm.cloud.sdk.core.security.Authenticator;
 import com.ibm.cloud.sdk.core.security.IamAuthenticator;
-import com.ibm.watson.assistant.v2.model.DialogSuggestion;
 import com.ibm.watson.assistant.v2.model.MessageInput;
 import java.util.logging.LogManager;
 import java.util.List;
