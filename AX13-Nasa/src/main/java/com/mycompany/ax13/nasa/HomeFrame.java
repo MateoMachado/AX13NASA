@@ -24,6 +24,7 @@ public class HomeFrame extends javax.swing.JFrame {
         initComponents();
         String respuesta = bot.sendMessage(""); // initial message
         jTextAreaChat.setText("Bot: " + respuesta);
+        
     }
 
     /**
@@ -47,11 +48,12 @@ public class HomeFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextInput = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 0, 0));
+        setExtendedState(MAXIMIZED_BOTH);
 
         jPanel1.setBackground(new java.awt.Color(11, 61, 145));
 
@@ -86,6 +88,7 @@ public class HomeFrame extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(238, 238, 238));
 
         jButton4.setBackground(new java.awt.Color(11, 61, 145));
+        jButton4.setText("->");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -107,6 +110,11 @@ public class HomeFrame extends javax.swing.JFrame {
         jTextInput.setForeground(new java.awt.Color(0, 0, 0));
         jTextInput.setName(""); // NOI18N
         jTextInput.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        jTextInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextInputKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTextInput);
         jTextInput.getAccessibleContext().setAccessibleName("textoUsuario");
 
@@ -151,10 +159,6 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ChatBot");
 
-        jButton5.setBackground(new java.awt.Color(11, 61, 145));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton5.setText("SCHEDULE");
-
         jButton6.setBackground(new java.awt.Color(11, 61, 145));
         jButton6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton6.setText("User Info");
@@ -182,11 +186,6 @@ public class HomeFrame extends javax.swing.JFrame {
                         .addGap(39, 39, 39)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(340, 340, 340)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(340, 340, 340)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,11 +205,6 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(193, 193, 193)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
-                    .addGap(194, 194, 194)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,16 +223,15 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         String textChatBot = jTextInput.getText();
+        
         jTextInput.setText("");
-        if (!textChatBot.isEmpty()) {
-            jTextAreaChat.setText(jTextAreaChat.getText() + "\nYou: " + textChatBot.trim());
-            String respuesta = bot.sendMessage(textChatBot.trim());
-            jTextAreaChat.setText(jTextAreaChat.getText() + "\nBot: " + respuesta);
-        } else {
-
+         if (!textChatBot.isEmpty()) {
+             jTextAreaChat.setText(jTextAreaChat.getText() + "\nYou: " + textChatBot.trim());
+             String respuesta = bot.sendMessage(textChatBot.trim());
+             jTextAreaChat.setText(jTextAreaChat.getText() + "\nBot: " + respuesta);
+         } else {
             JOptionPane.showMessageDialog(null, "No se pueden enviar mensajes en blanco");
-
-        }
+         }        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -277,6 +270,22 @@ public class HomeFrame extends javax.swing.JFrame {
             this.hide();
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jTextInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextInputKeyTyped
+        // TODO add your handling code here:
+        if(evt.getKeyChar() == '\n'){
+            String textChatBot = jTextInput.getText();
+        
+            jTextInput.setText("");
+            if (!textChatBot.isEmpty()) {
+                jTextAreaChat.setText(jTextAreaChat.getText() + "\nYou: " + textChatBot.trim());
+                String respuesta = bot.sendMessage(textChatBot.trim());
+                jTextAreaChat.setText(jTextAreaChat.getText() + "\nBot: " + respuesta);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pueden enviar mensajes en blanco");
+            }   
+        }
+    }//GEN-LAST:event_jTextInputKeyTyped
 
     /**
      * @param args the command line arguments
@@ -319,7 +328,6 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
