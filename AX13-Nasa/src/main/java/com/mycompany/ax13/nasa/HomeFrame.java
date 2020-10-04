@@ -6,6 +6,7 @@
 package com.mycompany.ax13.nasa;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,7 +32,7 @@ public class HomeFrame extends javax.swing.JFrame {
         
         bot = new Chatbot(APIKEY, ASSISTANTID, DATE);
         String respuesta = bot.sendMessage("");
-        jTextAreaChat.setText(respuesta);
+        jTextAreaChat.setText("Bot: "+respuesta);
     }
 
     /**
@@ -84,6 +85,7 @@ public class HomeFrame extends javax.swing.JFrame {
         jTextAreaChat.setEditable(false);
         jTextAreaChat.setBackground(new java.awt.Color(255, 255, 255));
         jTextAreaChat.setColumns(20);
+        jTextAreaChat.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextAreaChat.setForeground(new java.awt.Color(0, 0, 0));
         jTextAreaChat.setRows(5);
         jTextAreaChat.setName("TextChatBot"); // NOI18N
@@ -91,7 +93,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
         jTextInput.setBackground(new java.awt.Color(238, 238, 238));
         jTextInput.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextInput.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jTextInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextInput.setForeground(new java.awt.Color(0, 0, 0));
         jTextInput.setName(""); // NOI18N
         jTextInput.setSelectedTextColor(new java.awt.Color(0, 0, 0));
@@ -145,24 +147,23 @@ public class HomeFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(39, 39, 39)))
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(44, 44, 44)
                 .addComponent(jLabel1)
-                .addGap(80, 80, 80)
+                .addGap(56, 56, 56)
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
@@ -192,13 +193,15 @@ public class HomeFrame extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         String textChatBot = jTextInput.getText();
         jTextInput.setText("");
-        // Fijarse si hay algo antes de poner el enter, FALTA
-        jTextAreaChat.setText(jTextAreaChat.getText() + "\nYou: " + textChatBot );
-        //Mandarlo al bot para preguntar y agarrar la respuesta
-        String respuesta = bot.sendMessage(textChatBot);
-        jTextAreaChat.setText(jTextAreaChat.getText() + "\nBot: " + respuesta);
-        
-                
+        if(!textChatBot.isEmpty()){
+            jTextAreaChat.setText(jTextAreaChat.getText() + "\nYou: " + textChatBot.trim());
+            String respuesta = bot.sendMessage(textChatBot.trim());
+            jTextAreaChat.setText(jTextAreaChat.getText() + "\nBot: " + respuesta);
+        }else{
+           
+        JOptionPane.showMessageDialog(null, "No se pueden enviar mensajes en blanco");
+    
+        }                
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
