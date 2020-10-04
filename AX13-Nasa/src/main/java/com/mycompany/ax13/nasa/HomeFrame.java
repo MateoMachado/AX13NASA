@@ -18,15 +18,6 @@ public class HomeFrame extends javax.swing.JFrame {
      */
     public HomeFrame() {
         initComponents();
-        ImageIcon img1 = this.createImageIcon("\\src\\main\\java\\com\\mycompany\\ax13\\nasa\\HomeButton.png", "");
-        jButton1.setIcon(img1);
-        ImageIcon img2 = this.createImageIcon("src/FoodButton.png", "");
-        jButton2.setIcon(img2);
-        ImageIcon img3 = this.createImageIcon("src/CalendarButton.png", "");
-        jButton3.setIcon(img3);
-        ImageIcon img4 = this.createImageIcon("src/SendButton.png", "");
-        jButton4.setIcon(img4);
-        
     }
 
     /**
@@ -55,11 +46,13 @@ public class HomeFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(11, 61, 145));
 
         jButton1.setBackground(new java.awt.Color(11, 61, 145));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/ax13/nasa/HomeButton.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\FIT\\Desktop\\homebutton_99695.png")); // NOI18N
 
         jButton2.setBackground(new java.awt.Color(11, 61, 145));
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\FIT\\Desktop\\IMAGENES\\FoodButton.png")); // NOI18N
 
         jButton3.setBackground(new java.awt.Color(11, 61, 145));
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\FIT\\Desktop\\IMAGENES\\CalendarButton.png")); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(238, 238, 238));
 
@@ -73,12 +66,14 @@ public class HomeFrame extends javax.swing.JFrame {
         jTextInput.getAccessibleContext().setAccessibleName("textoUsuario");
 
         jButton4.setBackground(new java.awt.Color(11, 61, 145));
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\FIT\\Desktop\\IMAGENES\\SendButton.png")); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
+        jTextAreaChat.setEditable(false);
         jTextAreaChat.setBackground(new java.awt.Color(255, 255, 255));
         jTextAreaChat.setColumns(20);
         jTextAreaChat.setForeground(new java.awt.Color(0, 0, 0));
@@ -107,8 +102,8 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -118,9 +113,9 @@ public class HomeFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -203,16 +198,6 @@ public class HomeFrame extends javax.swing.JFrame {
         });
     }
     
-protected ImageIcon createImageIcon(String path,
-                                           String description) {
-    java.net.URL imgURL = getClass().getResource(path);
-    if (imgURL != null) {
-        return new ImageIcon(imgURL, description);
-    } else {
-        System.err.println("Couldn't find file: " + path);
-        return null;
-    }
-}
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
