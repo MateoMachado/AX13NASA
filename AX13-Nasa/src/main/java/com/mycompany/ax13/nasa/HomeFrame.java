@@ -51,7 +51,6 @@ public class HomeFrame extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 0, 0));
         setExtendedState(MAXIMIZED_BOTH);
 
