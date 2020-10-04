@@ -5,7 +5,7 @@
  */
 package com.mycompany.ax13.nasa;
 
-import javax.swing.ImageIcon;
+//import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -63,19 +63,30 @@ public class HomeFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(11, 61, 145));
 
         jButton1.setBackground(new java.awt.Color(11, 61, 145));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\FIT\\Desktop\\homebutton_99695.png")); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1.setText("HOME");
         jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jButton2.setBackground(new java.awt.Color(11, 61, 145));
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\FIT\\Desktop\\IMAGENES\\FoodButton.png")); // NOI18N
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton2.setText("FOOD");
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(11, 61, 145));
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\FIT\\Desktop\\IMAGENES\\CalendarButton.png")); // NOI18N
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton3.setText("SCHEDULE");
 
         jPanel2.setBackground(new java.awt.Color(238, 238, 238));
 
         jButton4.setBackground(new java.awt.Color(11, 61, 145));
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\FIT\\Desktop\\IMAGENES\\SendButton.png")); // NOI18N
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton4.setText("->");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -203,6 +214,14 @@ public class HomeFrame extends javax.swing.JFrame {
     
         }                
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        FoodFrame food = new FoodFrame();
+        food.show();
+        bot.finishSession();
+        this.hide();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
