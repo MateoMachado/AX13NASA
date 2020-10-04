@@ -109,7 +109,7 @@ public class Chatbot {
     private Person createUser(MessageContextSkills context, MessageOutput output) {
         Map<String, Object> contextVariables = context.getProperties().get("main skill").userDefined();
         if (contextVariables != null) {
-            String name = String.valueOf(contextVariables.getOrDefault("nombre", "Indefinido"));
+            String name = String.valueOf(contextVariables.getOrDefault("name", "Indefinido"));
             String lastName = String.valueOf(contextVariables.getOrDefault("apellido", "Indefinido"));
             String genre = String.valueOf(contextVariables.getOrDefault("sexo", "Indefinido"));
             double age = (double) contextVariables.getOrDefault("edad", 0);
